@@ -45,16 +45,6 @@ public class WorkorderController {
     @Autowired
     private WorkorderRepairCellphoneRepository workorderRepairCellphoneRepository;
 
-   /* @GetMapping("/workorders/{number}")
-    public ResponseEntity<Object> getWorkorderByNumber(@PathVariable Integer number){
-        if (workorderRepository.findByNumber(number) == null){
-            return new ResponseEntity<>("This order don't exists in database", HttpStatus.FORBIDDEN);
-        }
-
-        WorkorderDTO workorderDTO = new WorkorderDTO(workorderRepository.findByNumber(number));
-        return new ResponseEntity<>(workorderDTO, HttpStatus.OK);
-    }*/
-
     @GetMapping("/workorders")
     public List<WorkorderDTO> getWorkordersDTO(){
         return workorderRepository
@@ -175,7 +165,8 @@ public class WorkorderController {
     }
 
     @GetMapping("/workorders/find-by-date")
-    public ResponseEntity<Object> findByDate(@RequestParam("startDateStr") String startDateStr, @RequestParam("endDateStr") String endDateStr) {
+    public ResponseEntity<Object> findByDate(@RequestParam("startDateStr") String startDateStr,
+                                             @RequestParam("endDateStr") String endDateStr) {
 
         LocalDate startDate = LocalDate.parse(startDateStr);
         LocalDate endDate = LocalDate.parse(endDateStr);

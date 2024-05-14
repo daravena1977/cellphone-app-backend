@@ -51,7 +51,8 @@ public class RepairCellphoneController {
 
         Repair repair = repairRepository.findById(repairCellphoneRequestDTO.getIdTypeRepair()).orElse(null);
 
-        return ResponseEntity.ok(new RepairCellphoneDTO (repairCellphoneRepository.findByCellPhoneAndRepair(cellphone, repair)));
+        return ResponseEntity.ok(new RepairCellphoneDTO (repairCellphoneRepository
+                .findByCellPhoneAndRepair(cellphone, repair)));
     }
 
     @PostMapping("/repaircellphones")
