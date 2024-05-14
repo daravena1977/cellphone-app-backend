@@ -1,8 +1,6 @@
 package com.diegoaravena.cellphoneserviceapp.controllers;
 
 import com.diegoaravena.cellphoneserviceapp.dtos.NewWorkorderDTO;
-import com.diegoaravena.cellphoneserviceapp.dtos.RepairCellphoneDTO;
-import com.diegoaravena.cellphoneserviceapp.dtos.RepairCellphoneDTOS;
 import com.diegoaravena.cellphoneserviceapp.dtos.WorkorderDTO;
 import com.diegoaravena.cellphoneserviceapp.models.enums.StateOrder;
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.RepairCellphone;
@@ -13,8 +11,7 @@ import com.diegoaravena.cellphoneserviceapp.repositories.ClientRepository;
 import com.diegoaravena.cellphoneserviceapp.repositories.RepairCellphoneRepository;
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepairCellphoneRepository;
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepository;
-import com.diegoaravena.cellphoneserviceapp.security.services.WorkOrderService;
-import net.minidev.json.JSONValue;
+import com.diegoaravena.cellphoneserviceapp.services.WorkOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
