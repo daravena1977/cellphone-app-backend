@@ -15,6 +15,8 @@ public class WorkorderRepairCellphoneDTO {
     private String model;
     private String typeRepair;
 
+    public WorkorderRepairCellphoneDTO() {
+    }
 
     public WorkorderRepairCellphoneDTO(WorkorderRepairCellphone workorderRepairCellphone) {
         id = workorderRepairCellphone.getId();

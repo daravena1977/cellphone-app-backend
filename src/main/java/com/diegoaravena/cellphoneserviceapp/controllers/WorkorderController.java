@@ -12,6 +12,7 @@ import com.diegoaravena.cellphoneserviceapp.repositories.RepairCellphoneReposito
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepairCellphoneRepository;
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepository;
 import com.diegoaravena.cellphoneserviceapp.services.WorkOrderService;
+import org.hibernate.ObjectDeletedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -182,6 +183,11 @@ public class WorkorderController {
         Set<WorkorderDTO> workorderDTOS = workOrderService.findAllWorkOrdersByState(stateOrder);
 
         return ResponseEntity.ok().body(workorderDTOS);
+    }
+
+    @PutMapping("/workorders/update")
+    public ResponseEntity<Object> updateWorkOrder(@RequestBody WorkorderDTO workorderDTO) {
+        return ResponseEntity.ok(workOrderService.updateWorkOrder(workorderDTO));
     }
 
 }

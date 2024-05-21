@@ -22,6 +22,9 @@ public class WorkorderDTO {
 
     private Long idClient;
 
+    public WorkorderDTO() {
+    }
+
     public WorkorderDTO(Workorder workorder) {
         id = workorder.getId();
         number = workorder.getNumber();
@@ -59,6 +62,7 @@ public class WorkorderDTO {
     public StateOrder getStateOrder() {
         return stateOrder;
     }
+
     public Set<WorkorderRepairCellphoneDTO> getWorkorderRepairCellphones() {
         return workorderRepairCellphones;
     }

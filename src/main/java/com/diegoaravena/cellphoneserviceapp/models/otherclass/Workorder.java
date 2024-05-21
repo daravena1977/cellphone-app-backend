@@ -29,7 +29,8 @@ public class Workorder {
     public Workorder() {
     }
 
-    public Workorder(Integer number, LocalDate creationDate, LocalDate deliverDate, String description, StateOrder stateOrder) {
+    public Workorder(Integer number, LocalDate creationDate, LocalDate deliverDate, String description,
+                     StateOrder stateOrder) {
         this.number = number;
         this.creationDate = creationDate;
         this.deliverDate = deliverDate;
@@ -88,6 +89,10 @@ public class Workorder {
     public void addRepair(WorkorderRepairCellphone workorderRepairCellphone) {
         workorderRepairCellphone.setWorkOrder(this);
         workorderRepairCellphones.add(workorderRepairCellphone);
+    }
+
+    public void setWorkorderRepairCellphones(Set<WorkorderRepairCellphone> workorderRepairCellphones) {
+        this.workorderRepairCellphones = workorderRepairCellphones;
     }
 
     public Client getClient() {
