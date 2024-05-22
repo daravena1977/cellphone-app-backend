@@ -187,7 +187,14 @@ public class WorkorderController {
 
     @PutMapping("/workorders/update")
     public ResponseEntity<Object> updateWorkOrder(@RequestBody WorkorderDTO workorderDTO) {
-        return ResponseEntity.ok(workOrderService.updateWorkOrder(workorderDTO));
+
+        try {
+            return ResponseEntity.ok(workOrderService.updateWorkOrder(workorderDTO));
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
 }
