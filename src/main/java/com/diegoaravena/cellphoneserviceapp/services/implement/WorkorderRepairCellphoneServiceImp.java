@@ -31,7 +31,7 @@ public class WorkorderRepairCellphoneServiceImp implements WorkorderRepairCellph
 
     @Override
     public WorkorderRepairCellphone save(WorkorderRepairCellphone workorderRepairCellphone) {
-        return null;
+        return workorderRepairCellphoneRepository.save(workorderRepairCellphone);
     }
 
     @Override

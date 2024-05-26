@@ -1,5 +1,7 @@
 package com.diegoaravena.cellphoneserviceapp.models.otherclass;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,6 +18,7 @@ public class RepairCellphone {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cellphone cellPhone;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "repairCellphone")
     private Set<WorkorderRepairCellphone> workorderRepairCellphones;
 
