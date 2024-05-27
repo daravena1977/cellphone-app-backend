@@ -2,6 +2,7 @@ package com.diegoaravena.cellphoneserviceapp.models.subclass;
 
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.Workorder;
 import com.diegoaravena.cellphoneserviceapp.models.superclass.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,6 +55,7 @@ public class Client extends User {
         return workOrders;
     }
 
+    @JsonIgnore
     public void setWorkOrders(Set<Workorder> workOrders) {
         this.workOrders = workOrders;
     }

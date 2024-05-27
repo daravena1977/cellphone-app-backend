@@ -1,5 +1,7 @@
 package com.diegoaravena.cellphoneserviceapp.models.otherclass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -46,6 +48,7 @@ public class WorkorderRepairCellphone {
         return repairCellphone;
     }
 
+    @JsonIgnore
     public void setRepairCellphone(RepairCellphone repairCellphone) {
         this.repairCellphone = repairCellphone;
     }

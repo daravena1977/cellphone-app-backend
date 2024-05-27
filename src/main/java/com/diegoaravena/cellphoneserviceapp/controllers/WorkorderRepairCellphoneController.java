@@ -46,7 +46,7 @@ public class WorkorderRepairCellphoneController {
     }
 
     @PostMapping("/workordersRepairCellphone/new-repair")
-    public ResponseEntity<WorkorderRepairCellphone> addWorkorderRepairCellphone(NewWorkorderRepairCellphoneDTO                                                                                                newWorkorderRepairCellphoneDTO) {
+    public ResponseEntity<WorkorderRepairCellphone> addWorkorderRepairCellphone(@RequestBody NewWorkorderRepairCellphoneDTO                                                                                                newWorkorderRepairCellphoneDTO) {
 
         WorkorderRepairCellphone workorderRepairCellphone =
                 new WorkorderRepairCellphone(newWorkorderRepairCellphoneDTO.getPrice());

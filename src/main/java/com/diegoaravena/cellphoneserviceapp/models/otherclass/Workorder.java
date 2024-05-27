@@ -2,6 +2,7 @@ package com.diegoaravena.cellphoneserviceapp.models.otherclass;
 
 import com.diegoaravena.cellphoneserviceapp.models.enums.StateOrder;
 import com.diegoaravena.cellphoneserviceapp.models.subclass.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -90,7 +91,7 @@ public class Workorder {
         workorderRepairCellphone.setWorkOrder(this);
         workorderRepairCellphones.add(workorderRepairCellphone);
     }
-
+    @JsonIgnore
     public void setWorkorderRepairCellphones(Set<WorkorderRepairCellphone> workorderRepairCellphones) {
         this.workorderRepairCellphones = workorderRepairCellphones;
     }
@@ -99,6 +100,7 @@ public class Workorder {
         return client;
     }
 
+    @JsonIgnore
     public void setClient(Client client) {
         this.client = client;
     }
