@@ -3,6 +3,7 @@ package com.diegoaravena.cellphoneserviceapp.controllers;
 import com.diegoaravena.cellphoneserviceapp.dtos.ClientDTO;
 import com.diegoaravena.cellphoneserviceapp.models.subclass.Client;
 import com.diegoaravena.cellphoneserviceapp.repositories.ClientRepository;
+import com.diegoaravena.cellphoneserviceapp.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,17 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class ClientController {
 
+    private final ClientService clientService;
+
     @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     @GetMapping("/clients")
     public Set<ClientDTO> getClientsDTO(){
@@ -144,6 +151,18 @@ public class ClientController {
 
         return new ResponseEntity<>(clientDTO, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/client/by-id")
+    public ResponseEntity<Object> getClientById(@RequestParam Long id) {
+
+        Client client = this.clientService.findById(id);
+
+        if (client == null) {
+            return new ResponseEntity<>("Este cliente no existe en la base de datos", HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok(client);
     }
 
 }

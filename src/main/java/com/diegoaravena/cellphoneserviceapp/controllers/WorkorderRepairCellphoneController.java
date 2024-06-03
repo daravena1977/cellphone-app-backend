@@ -6,7 +6,6 @@ import com.diegoaravena.cellphoneserviceapp.models.otherclass.Workorder;
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.WorkorderRepairCellphone;
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepository;
 import com.diegoaravena.cellphoneserviceapp.services.RepairCellphoneService;
-import com.diegoaravena.cellphoneserviceapp.services.WorkOrderService;
 import com.diegoaravena.cellphoneserviceapp.services.WorkorderRepairCellphoneService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,20 +45,24 @@ public class WorkorderRepairCellphoneController {
     }
 
     @PostMapping("/workordersRepairCellphone/new-repair")
-    public ResponseEntity<WorkorderRepairCellphone> addWorkorderRepairCellphone(@RequestBody NewWorkorderRepairCellphoneDTO                                                                                                newWorkorderRepairCellphoneDTO) {
-
-        WorkorderRepairCellphone workorderRepairCellphone =
-                new WorkorderRepairCellphone(newWorkorderRepairCellphoneDTO.getPrice());
-
+    public ResponseEntity<Object> addWorkorderRepairCellphone(@RequestBody NewWorkorderRepairCellphoneDTO                                                                                                newWorkorderRepairCellphoneDTO) {
+        
         RepairCellphone repairCellphone = repairCellphoneService
                 .findById(newWorkorderRepairCellphoneDTO.getIdRepair());
 
         Workorder workorder = workorderRepository
                 .findById(newWorkorderRepairCellphoneDTO.getIdWorkorder()).orElse(null);
 
+        if (this.workorderRepairCellphoneService.existsByRepairCellphoneAndWorkOrder(repairCellphone, workorder)) {
+            return new ResponseEntity<>("El tipo de reparacion ya existe en esta orden de trabajo",
+                    HttpStatus.FORBIDDEN);
+        }
+
+        WorkorderRepairCellphone workorderRepairCellphone =
+                new WorkorderRepairCellphone(newWorkorderRepairCellphoneDTO.getPrice());
+
         workorderRepairCellphone.setRepairCellphone(repairCellphone);
         workorderRepairCellphone.setWorkOrder(workorder);
-
 
         workorderRepairCellphoneService.save(workorderRepairCellphone);
 

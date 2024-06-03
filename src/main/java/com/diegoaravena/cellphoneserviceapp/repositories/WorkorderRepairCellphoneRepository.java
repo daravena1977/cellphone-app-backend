@@ -1,6 +1,8 @@
 package com.diegoaravena.cellphoneserviceapp.repositories;
 
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.RefreshToken;
+import com.diegoaravena.cellphoneserviceapp.models.otherclass.RepairCellphone;
+import com.diegoaravena.cellphoneserviceapp.models.otherclass.Workorder;
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.WorkorderRepairCellphone;
 import com.diegoaravena.cellphoneserviceapp.models.superclass.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,11 +14,6 @@ import java.util.Optional;
 
 @RepositoryRestResource
 public interface WorkorderRepairCellphoneRepository extends JpaRepository<WorkorderRepairCellphone, Long> {
-    @Repository
-    interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
-        Optional<RefreshToken> findByToken(String token);
+    boolean existsByRepairCellphoneAndWorkOrder(RepairCellphone repairCellphone, Workorder workorder);
 
-        @Modifying
-        int deleteByUser(User user);
-    }
 }

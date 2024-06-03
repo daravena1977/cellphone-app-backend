@@ -1,5 +1,7 @@
 package com.diegoaravena.cellphoneserviceapp.services.implement;
 
+import com.diegoaravena.cellphoneserviceapp.models.otherclass.RepairCellphone;
+import com.diegoaravena.cellphoneserviceapp.models.otherclass.Workorder;
 import com.diegoaravena.cellphoneserviceapp.models.otherclass.WorkorderRepairCellphone;
 import com.diegoaravena.cellphoneserviceapp.repositories.WorkorderRepairCellphoneRepository;
 import com.diegoaravena.cellphoneserviceapp.services.WorkorderRepairCellphoneService;
@@ -48,4 +50,12 @@ public class WorkorderRepairCellphoneServiceImp implements WorkorderRepairCellph
     public WorkorderRepairCellphone updateWorkorderRepairCellphone(WorkorderRepairCellphone workorderRepairCellphone) {
         return null;
     }
+
+    @Override
+    public boolean existsByRepairCellphoneAndWorkOrder(RepairCellphone repairCellphone, Workorder workorder) {
+        return this.workorderRepairCellphoneRepository
+                .existsByRepairCellphoneAndWorkOrder(repairCellphone, workorder);
+    }
+
+
 }
