@@ -66,6 +66,7 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         .authorizeRequests()
                 .antMatchers("/api/signin", "/api/signup").permitAll()
+                .antMatchers("/api/refreshtoken").permitAll()
                 .antMatchers("/api/test/*").permitAll()
                 .antMatchers(h2ConsolePath + "/**").permitAll()
                 .anyRequest().authenticated();
